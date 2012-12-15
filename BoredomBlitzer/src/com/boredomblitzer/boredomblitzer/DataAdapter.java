@@ -91,7 +91,8 @@ public class DataAdapter
          {
              //String sql ="SELECT * FROM Activities";
              String sql ="SELECT Title FROM Activities WHERE _id = " + actID;
-             //String[] finalResultStr = null;
+             //String sql = "SELECT Title, Category"
+        	 //String[] finalResultStr = null;
              Cursor mCur = mDb.rawQuery(sql, null);
              if (mCur!=null)
              {
