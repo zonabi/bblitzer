@@ -1,0 +1,10 @@
+BEGIN TRANSACTION;
+CREATE TABLE Activities (_id INTEGER PRIMARY KEY, Title TEXT, Category NUMERIC);
+INSERT INTO Activities VALUES(1,'Write a letter to Grandma and Grandpa',1);
+INSERT INTO Activities VALUES(2,'Build a clubhouse',2);
+CREATE TABLE Categories (_id INTEGER PRIMARY KEY, Title TEXT, Image TEXT);
+INSERT INTO Categories VALUES(1,'Family & Friends','cat_familyandfriends.png');
+INSERT INTO Categories VALUES(2,'Outdoor Activities','cat_outdoor.png');
+CREATE TABLE "android_metadata" ("locale" TEXT DEFAULT 'en_US');
+INSERT INTO android_metadata VALUES('en_US');
+COMMIT;
