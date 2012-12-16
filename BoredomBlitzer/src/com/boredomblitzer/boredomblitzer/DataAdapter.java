@@ -90,16 +90,49 @@ public class DataAdapter
          try
          {
              //String sql ="SELECT * FROM Activities";
-             String sql ="SELECT Title FROM Activities WHERE _id = " + actID;
-             //String sql = "SELECT Title, Category"
+            String sql ="SELECT Act_Title, Category FROM Activities WHERE _id = " + actID;
+             //String sql = "SELECT Act_Title, Category FROM Activities WHERE _id = " + actID + " AND SELECT Cat_Title, Image FROM Categories WHERE _id = Category"; 
         	 //String[] finalResultStr = null;
+            // String sql ="SELECT Cat_Title, Image FROM Categories WHERE _id IN (SELECT Act_Title, Category FROM Activities WHERE _id = " + actID;
              Cursor mCur = mDb.rawQuery(sql, null);
              if (mCur!=null)
              {
             	 if(mCur.moveToFirst()){
             		 do {
-            			 String actTitle = mCur.getString(mCur.getColumnIndex("Title"));
-            			 Log.i(TAG, "actTitle: " + actTitle);
+            			 String actTitle = mCur.getString(mCur.getColumnIndex("Act_Title"));
+            			 String catID = mCur.getString(mCur.getColumnIndex("Category"));
+            			 Log.i(TAG, "actTitle: " + actTitle + " catID: " + catID);
+            			 getCategory(Integer.decode(catID));
+            		 }while (mCur.moveToNext());
+            	 } 
+            	//String tstStr = mCur.getString(getColumnIndex(0)); 
+            	//Log.i(TAG, "mCur toString: " + tstStr);
+                //mCur.moveToNext();
+             }
+             return mCur;
+         }
+         catch (SQLException mSQLException) 
+         {
+             Log.e(TAG, "getTestData >>"+ mSQLException.toString());
+             throw mSQLException;
+         }
+     }
+     
+     public Cursor getCategory(int catID)
+     {
+         try
+         {
+             
+             String sql ="SELECT Cat_Title, Image FROM Categories WHERE _id = " + catID;
+          
+             Cursor mCur = mDb.rawQuery(sql, null);
+             if (mCur!=null)
+             {
+            	 if(mCur.moveToFirst()){
+            		 do {
+            			 String catTitle = mCur.getString(mCur.getColumnIndex("Cat_Title"));
+            			 String catImage = mCur.getString(mCur.getColumnIndex("Image"));
+            			 Log.i(TAG, "actTitle: " + catTitle + " catID: " + catImage);
             		 }while (mCur.moveToNext());
             	 } 
             	//String tstStr = mCur.getString(getColumnIndex(0)); 

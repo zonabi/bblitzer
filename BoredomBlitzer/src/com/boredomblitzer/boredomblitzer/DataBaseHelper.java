@@ -19,10 +19,11 @@ private static String DB_PATH = "";
 private static String DB_NAME ="bb_database";// Database name
 private SQLiteDatabase mDataBase; 
 private final Context mContext;
+private static final int DATABASE_VERSION = 2;
 
 public DataBaseHelper(Context context) 
 {
-    super(context, DB_NAME, null, 1);// 1? its Database Version
+    super(context, DB_NAME, null, DATABASE_VERSION);// 1? its Database Version
     DB_PATH = "/data/data/" + context.getPackageName() + "/databases/";
     this.mContext = context;
 }   
@@ -32,9 +33,18 @@ public void createDataBase() throws IOException
     //If database not exists copy it from the assets
 
     boolean mDataBaseExist = checkDataBase();
+    
+    if(mDataBaseExist){
+    	Log.d(TAG, "db exists");
+    	this.getWritableDatabase();
+    }
+    
+    mDataBaseExist = checkDataBase();
+    
     if(!mDataBaseExist)
     {
         this.getReadableDatabase();
+        //this.getWritableDatabase();
         this.close();
         try 
         {
@@ -100,7 +110,10 @@ public void createDataBase() throws IOException
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 		// TODO Auto-generated method stub
-		
+		if (newVersion > oldVersion){
+			Log.d("Database Upgrade", "Database version higher than old.");
+			mContext.deleteDatabase(DB_NAME);
+		}
 	}
 
 }
