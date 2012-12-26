@@ -5,7 +5,7 @@
     tools:context=".ShowActivity" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/activityCategory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -13,14 +13,28 @@
         android:layout_marginTop="24dp"
         android:text="@string/activity_top_txt" />
 
-    <ImageView
-        android:id="@+id/imageView1"
+    <TextView
+        android:id="@+id/activityTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"
+        android:layout_below="@+id/activityCategory"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp"
-        android:src="@drawable/bb_activity_square01" 
-        android:contentDescription="Activity" />
+        android:layout_marginTop="22dp"
+        android:ems="10"
+        android:text="activity title" />
+    
+    <ImageView
+        android:id="@+id/categoryImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/activityTitle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="82dp"
+        android:contentDescription="ActivityImage"
+        android:src="@drawable/bb_activity_square01" />
+
+    
+
+       
 
 </RelativeLayout>

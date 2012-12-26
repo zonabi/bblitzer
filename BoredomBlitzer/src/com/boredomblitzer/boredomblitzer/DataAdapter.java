@@ -1,6 +1,7 @@
 package com.boredomblitzer.boredomblitzer;
 
 import java.io.IOException;
+
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -14,11 +15,19 @@ public class DataAdapter
     private final Context mContext;
     private SQLiteDatabase mDb;
     private DataBaseHelper mDbHelper;
+   // private MyHelperClass myHelpClass;
+    public String actTitle;
+    public String catTitle;
+    public String catID;
+    public String catImage;
+    //private ShowActivity SAClass;
 
     public DataAdapter(Context context) 
     {
+    	//DataAdapter classRef = this;
         this.mContext = context;
         mDbHelper = new DataBaseHelper(mContext);
+       // myHelpClass = new MyHelperClass(null, actTitle);
     }
 
     public DataAdapter createDatabase() throws SQLException 
@@ -51,12 +60,7 @@ public class DataAdapter
         return this;
     }
 
-    public void close() 
-    {
-        mDbHelper.close();
-    }
-
-     public Cursor getTestData()
+    public Cursor getTestData()
      {
          try
          {
@@ -68,7 +72,7 @@ public class DataAdapter
              {
             	 if(mCur.moveToFirst()){
             		 do {
-            			 String actTitle = mCur.getString(mCur.getColumnIndex("Title"));
+            			 actTitle = mCur.getString(mCur.getColumnIndex("Title"));
             			 Log.i(TAG, "actTitle: " + actTitle);
             		 }while (mCur.moveToNext());
             	 } 
@@ -85,7 +89,12 @@ public class DataAdapter
          }
      }
      
-     public Cursor getActivityFromID(int actID)
+     public void close() 
+	{
+	    mDbHelper.close();
+	}
+
+	public Cursor getActivityFromID(int actID)
      {
          try
          {
@@ -99,9 +108,27 @@ public class DataAdapter
              {
             	 if(mCur.moveToFirst()){
             		 do {
-            			 String actTitle = mCur.getString(mCur.getColumnIndex("Act_Title"));
-            			 String catID = mCur.getString(mCur.getColumnIndex("Category"));
+            			 actTitle = mCur.getString(mCur.getColumnIndex("Act_Title"));
+            			 catID = mCur.getString(mCur.getColumnIndex("Category"));
             			 Log.i(TAG, "actTitle: " + actTitle + " catID: " + catID);
+            			 
+            			// TextView tv = (TextView) findViewById(R.id.activityTitle);
+            			// tv.setText(actTitle);
+            			 
+            			 //classRef.mContext.setActTextField(actTitle);
+            			 
+            			 //myHelpClass.callMyActivityMethod(actTitle);
+            			 
+            			 //set the activity title
+            			 
+            			// Object ShowActivity.activityTitle;
+						
+            			//ShowActivity cv = setContentView(R.layout.activity_show);
+            			// TextView tv = (TextView) findViewById(R.id.activityTitle);
+            			//tv.setText(2);
+            			//@+id/activityTitle
+            			// tv.setText(actTitle);
+						//SAClass.setActTextField(actTitle);
             			 getCategory(Integer.decode(catID));
             		 }while (mCur.moveToNext());
             	 } 
@@ -130,8 +157,8 @@ public class DataAdapter
              {
             	 if(mCur.moveToFirst()){
             		 do {
-            			 String catTitle = mCur.getString(mCur.getColumnIndex("Cat_Title"));
-            			 String catImage = mCur.getString(mCur.getColumnIndex("Image"));
+            			 catTitle = mCur.getString(mCur.getColumnIndex("Cat_Title"));
+            			 catImage = mCur.getString(mCur.getColumnIndex("Image"));
             			 Log.i(TAG, "actTitle: " + catTitle + " catID: " + catImage);
             		 }while (mCur.moveToNext());
             	 } 
