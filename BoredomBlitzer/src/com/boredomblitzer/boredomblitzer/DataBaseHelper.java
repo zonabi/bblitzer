@@ -16,10 +16,10 @@ public class DataBaseHelper extends SQLiteOpenHelper{
 private static String TAG = "DataBaseHelper"; // Tag just for the LogCat window
 //destination path (location) of our database on device
 private static String DB_PATH = ""; 
-private static String DB_NAME ="bb_database";// Database name
+private static String DB_NAME ="boredomblizter_database";// Database name
 private SQLiteDatabase mDataBase; 
 private final Context mContext;
-private static final int DATABASE_VERSION = 2;
+private static final int DATABASE_VERSION = 4;
 
 public DataBaseHelper(Context context) 
 {

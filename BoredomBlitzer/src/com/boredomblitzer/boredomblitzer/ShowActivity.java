@@ -23,27 +23,6 @@ public class ShowActivity extends Activity {
 		String cat_img = intent.getStringExtra(MainScreen.CAT_IMAGE);
 		
 		
-		//MyHelperClass MyHelperClass = new MyHelperClass(this, "test");
-		
-		/*
-		Context urContext = this;
-		DataAdapter mDbHelper = new DataAdapter(urContext);        
-		mDbHelper.createDatabase();      
-		mDbHelper.open();
-
-		Cursor testdata = mDbHelper.getActivityFromID(2);
-		
-		String logTag = "DBCursor";
-		Log.i(logTag, "testdata: " + testdata);
-
-		mDbHelper.close();
-		
-		
-		// TextView tv = (TextView) findViewById(R.id.activityTitle);
-            			// tv.setText(actTitle);
-		
-		*/
-		
 		setActTextField(act_txt, cat_txt, cat_id);
 		
 	}
@@ -67,7 +46,17 @@ public class ShowActivity extends Activity {
 	}
 	
 	public void setCatImage(String catID){
-		
+		int catInt = Integer.decode(catID);
+		switch(catInt) {
+			case 1:
+				//load img
+				break;
+			case 2:
+				//load img
+				break;
+			case 3:
+				
+		}
 	}
 
 }

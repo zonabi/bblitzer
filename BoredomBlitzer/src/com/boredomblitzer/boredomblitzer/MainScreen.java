@@ -46,7 +46,7 @@ public class MainScreen extends Activity {
     public void blitzBtnPress(View view){
     	Intent intent = new Intent(this, ShowActivity.class);
     	mDbHelper.open();
-    	Cursor testdata = mDbHelper.getActivityFromID(2);
+    	Cursor testdata = mDbHelper.getActivityFromID(22);
     	
     	//String actTitle = testdata.getString(testdata.getColumnIndex("Act_Title"));
 		// String catID = testdata.getString(testdata.getColumnIndex("Category"));
