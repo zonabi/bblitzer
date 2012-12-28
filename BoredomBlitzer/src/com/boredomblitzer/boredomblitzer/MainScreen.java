@@ -1,5 +1,7 @@
 package com.boredomblitzer.boredomblitzer;
 
+import java.util.Random;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -46,7 +48,11 @@ public class MainScreen extends Activity {
     public void blitzBtnPress(View view){
     	Intent intent = new Intent(this, ShowActivity.class);
     	mDbHelper.open();
-    	Cursor testdata = mDbHelper.getActivityFromID(22);
+    	
+    	Random ran = new Random();
+    	int randomNum = ran.nextInt(540)+1;
+    	
+    	Cursor testdata = mDbHelper.getActivityFromID(randomNum);
     	
     	//String actTitle = testdata.getString(testdata.getColumnIndex("Act_Title"));
 		// String catID = testdata.getString(testdata.getColumnIndex("Category"));
