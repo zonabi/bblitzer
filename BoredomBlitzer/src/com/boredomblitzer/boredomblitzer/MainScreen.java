@@ -61,6 +61,8 @@ public class MainScreen extends Activity {
 		 intent.putExtra(CAT_ID, mDbHelper.catID);
 		 intent.putExtra(CAT_TITLE, mDbHelper.catTitle);
 		 intent.putExtra(CAT_IMAGE, mDbHelper.catImage);
+		 testdata.close();
+		 
     	mDbHelper.close();
     	//String logTag = "DBCursor";
 		//Log.i(logTag, "testdata: " + testdata);

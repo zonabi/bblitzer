@@ -15,19 +15,15 @@ public class DataAdapter
     private final Context mContext;
     private SQLiteDatabase mDb;
     private DataBaseHelper mDbHelper;
-   // private MyHelperClass myHelpClass;
     public String actTitle;
     public String catTitle;
     public String catID;
     public String catImage;
-    //private ShowActivity SAClass;
 
     public DataAdapter(Context context) 
     {
-    	//DataAdapter classRef = this;
         this.mContext = context;
         mDbHelper = new DataBaseHelper(mContext);
-       // myHelpClass = new MyHelperClass(null, actTitle);
     }
 
     public DataAdapter createDatabase() throws SQLException 
@@ -91,6 +87,7 @@ public class DataAdapter
      
      public void close() 
 	{
+    	// mCur.close();
 	    mDbHelper.close();
 	}
 
@@ -98,12 +95,10 @@ public class DataAdapter
      {
          try
          {
-             //String sql ="SELECT * FROM Activities";
+
             String sql ="SELECT Act_Title, Category FROM Activities WHERE _id = " + actID;
-             //String sql = "SELECT Act_Title, Category FROM Activities WHERE _id = " + actID + " AND SELECT Cat_Title, Image FROM Categories WHERE _id = Category"; 
-        	 //String[] finalResultStr = null;
-            // String sql ="SELECT Cat_Title, Image FROM Categories WHERE _id IN (SELECT Act_Title, Category FROM Activities WHERE _id = " + actID;
-             Cursor mCur = mDb.rawQuery(sql, null);
+            
+            Cursor mCur = mDb.rawQuery(sql, null);
              if (mCur!=null)
              {
             	 if(mCur.moveToFirst()){
@@ -112,30 +107,13 @@ public class DataAdapter
             			 catID = mCur.getString(mCur.getColumnIndex("Category"));
             			 Log.i(TAG, "actTitle: " + actTitle + " catID: " + catID);
             			 
-            			// TextView tv = (TextView) findViewById(R.id.activityTitle);
-            			// tv.setText(actTitle);
-            			 
-            			 //classRef.mContext.setActTextField(actTitle);
-            			 
-            			 //myHelpClass.callMyActivityMethod(actTitle);
-            			 
-            			 //set the activity title
-            			 
-            			// Object ShowActivity.activityTitle;
-						
-            			//ShowActivity cv = setContentView(R.layout.activity_show);
-            			// TextView tv = (TextView) findViewById(R.id.activityTitle);
-            			//tv.setText(2);
-            			//@+id/activityTitle
-            			// tv.setText(actTitle);
-						//SAClass.setActTextField(actTitle);
+            			
             			 getCategory(Integer.decode(catID));
             		 }while (mCur.moveToNext());
             	 } 
-            	//String tstStr = mCur.getString(getColumnIndex(0)); 
-            	//Log.i(TAG, "mCur toString: " + tstStr);
-                //mCur.moveToNext();
+
              }
+             mCur.close();
              return mCur;
          }
          catch (SQLException mSQLException) 
@@ -162,10 +140,9 @@ public class DataAdapter
             			 Log.i(TAG, "actTitle: " + catTitle + " catID: " + catImage);
             		 }while (mCur.moveToNext());
             	 } 
-            	//String tstStr = mCur.getString(getColumnIndex(0)); 
-            	//Log.i(TAG, "mCur toString: " + tstStr);
-                //mCur.moveToNext();
+
              }
+             mCur.close();
              return mCur;
          }
          catch (SQLException mSQLException) 
