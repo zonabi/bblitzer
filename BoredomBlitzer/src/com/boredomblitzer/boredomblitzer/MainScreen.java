@@ -50,7 +50,7 @@ public class MainScreen extends Activity {
     	mDbHelper.open();
     	
     	Random ran = new Random();
-    	int randomNum = ran.nextInt(540)+1;
+    	int randomNum = ran.nextInt(539)+1;
     	
     	Cursor testdata = mDbHelper.getActivityFromID(randomNum);
     	

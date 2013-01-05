@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bblitzer_bg1"
     tools:context=".MainScreen" >
 
     <TextView
@@ -19,8 +20,8 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:src="@drawable/bb_suncircle"
+        android:contentDescription="@string/blitzBtnDesc"
         android:onClick="blitzBtnPress"
-        android:contentDescription="@string/blitzBtnDesc" />
+        android:src="@drawable/bb_logo3a" />
 
 </RelativeLayout>
