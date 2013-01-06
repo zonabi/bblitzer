@@ -2,11 +2,11 @@
 <resources>
 
     <string name="app_name">Boredom Blitzer</string>
-    <string name="main_screen_msg">Click the button for ideas on how to Blitz Boredom!</string>
+    <string name="main_screen_msg">Tap To Blitz Your Boredom!</string>
     <string name="menu_settings">Settings</string>
     <string name="blitzBtnDesc">Boredom Blitzer Button!</string>
     <string name="hello_world">Hello world!</string>
-    <string name="title_activity_show">ShowActivity</string>
+    <string name="title_activity_show">Boredom Blitzer Activity!</string>
     <string name="activity_top_txt">Activity Txt here</string>
     <string name="activity_category_txt">Activity Category</string>
     <string name="activity_bottom_txt">Bottom Text</string>
