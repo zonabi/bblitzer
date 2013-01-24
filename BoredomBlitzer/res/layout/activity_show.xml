@@ -35,4 +35,15 @@
         android:contentDescription="ActivityImage"
         android:src="@drawable/bb_activity_square01" />
 
+    <ImageButton
+        android:id="@+id/imageButton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/categoryImage"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="14dp"
+        android:onClick="shareIt"
+        android:background="@null"
+        android:src="@drawable/bblitzer_sharebtn" />
+
 </RelativeLayout>
