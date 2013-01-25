@@ -6,10 +6,13 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Toast;
 
 public class MainScreen extends Activity {
 	
@@ -21,6 +24,10 @@ public class MainScreen extends Activity {
 	public final static String CAT_ID = "com.example.myfirstapp.CAT_ID";
 	public final static String CAT_TITLE = "com.example.myfirstapp.CAT_TITLE";
 	public final static String CAT_IMAGE = "com.example.myfirstapp.CAT_IMAGE";
+	
+	//shake gesture 
+	private SensorManager mSensorManager;
+	private ShakeEventListener mSensorListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +42,18 @@ public class MainScreen extends Activity {
 		//Cursor testdata = mDbHelper.getActivityFromID(2);
 
 		mDbHelper.close();
+		
+		//shake
+		 mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+		    mSensorListener = new ShakeEventListener();   
+		
+		    mSensorListener.setOnShakeListener(new ShakeEventListener.OnShakeListener() {
+		
+		      public void onShake() {
+		    	 blitzBtnPress(getCurrentFocus());
+		    	 // Log.i(TAG, "SHAKE IT!");
+		      }
+		    });
         
     }
 
@@ -43,6 +62,20 @@ public class MainScreen extends Activity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.activity_main_screen, menu);
         return true;
+    }
+    
+    @Override
+    protected void onResume() {
+      super.onResume();
+      mSensorManager.registerListener(mSensorListener,
+          mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
+          SensorManager.SENSOR_DELAY_UI);
+    }
+
+    @Override
+    protected void onPause() {
+      mSensorManager.unregisterListener(mSensorListener);
+      super.onStop();
     }
     
     public void blitzBtnPress(View view){
