@@ -1,15 +1,15 @@
 package com.boredomblitzer.boredomblitzer;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
-import android.content.ComponentName;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.Bundle;
-import android.util.Log;
+import android.os.Parcelable;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ImageView;
@@ -35,55 +35,39 @@ public class ShowActivity extends Activity {
 		
 		setActTextField(act_txt, cat_txt, cat_id);
 		
-		/*
-		ImageButton sharingButton = new ImageButton(this);
-		sharingButton.setLayoutParams(new ViewGroup.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-		sharingButton.setImageResource(R.drawable.bblitzer_sharebtn);
-		
-		sharingButton.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-			shareIt();
-			}
-			});
-			*/
-
-		
 	}
 	
 	public void shareIt(View view){
 		//sharing implementation
+		List<Intent> targetedShareIntents = new ArrayList<Intent>();
 		Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
 		sharingIntent.setType("text/plain");
 		String shareBody = "Boredom Blitzer suggested to " + act_txt + " to cure boredom! Get the app at http://www.BoredomBlitzer.com";
-		
-		//sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
-		//sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, "http://www.boredomblitzer.com");
+
 		PackageManager pm = view.getContext().getPackageManager();
 		List<ResolveInfo> activityList = pm.queryIntentActivities(sharingIntent, 0);
 		for(final ResolveInfo app : activityList) {
-			 Log.i(TAG, "app.actinfo.name: " + app.activityInfo.name);
-			//if((app.activityInfo.name).contains("facebook")) {
-			if("com.facebook.katana.ShareLinkActivity".equals(app.activityInfo.name)) {
-				/*
-				final ActivityInfo activity = app.activityInfo;
-				final ComponentName name = new ComponentName(activity.applicationInfo.packageName, activity.name);
-				sharingIntent.addCategory(Intent.CATEGORY_LAUNCHER);
-				sharingIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
-				sharingIntent.setComponent(name);
-				*/
-				
-				sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, "http://www.boredomblitzer.com");
-				startActivity(Intent.createChooser(sharingIntent, "Share idea"));
-				break;
-			} else {
-				sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Boredom Blitzer");
-				sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
-				startActivity(Intent.createChooser(sharingIntent, "Share idea"));
-				break;
-			}
+			
+			 String packageName = app.activityInfo.packageName;
+			 Intent targetedShareIntent = new Intent(android.content.Intent.ACTION_SEND);
+			 targetedShareIntent.setType("text/plain");
+			 targetedShareIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Boredom Blitzer Idea!");
+			 if(TextUtils.equals(packageName, "com.facebook.katana")){
+				 targetedShareIntent.putExtra(android.content.Intent.EXTRA_TEXT, "http://www.BoredomBlitzer.com");
+			 } else {
+				 targetedShareIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+			 }
+			 
+			 targetedShareIntent.setPackage(packageName);
+			 targetedShareIntents.add(targetedShareIntent);
+			 
 		}
 		
-		//startActivity(Intent.createChooser(sharingIntent, "Share idea"));
+		Intent chooserIntent = Intent.createChooser(targetedShareIntents.remove(0), "Share Idea");
+		
+		chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, targetedShareIntents.toArray(new Parcelable[]{}));
+		startActivity(chooserIntent);
+			
 	}
 
 	@Override
