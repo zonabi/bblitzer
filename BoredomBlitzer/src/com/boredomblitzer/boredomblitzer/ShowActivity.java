@@ -2,14 +2,20 @@ package com.boredomblitzer.boredomblitzer;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.database.Cursor;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ImageView;
@@ -17,9 +23,20 @@ import android.widget.TextView;
 
 public class ShowActivity extends Activity {
 	
+	private DataAdapter mDbHelper; 
+	
 	String act_txt;
 
+	public final static String ACT_TITLE = "com.example.myfirstapp.ACT_TITLE";
+	public final static String CAT_ID = "com.example.myfirstapp.CAT_ID";
+	public final static String CAT_TITLE = "com.example.myfirstapp.CAT_TITLE";
+	//public final static String CAT_IMAGE = "com.example.myfirstapp.CAT_IMAGE";
+	
 	protected static final String TAG = "ShowActivity";
+	
+	//shake gesture 
+	private SensorManager mSensorManager;
+	private ShakeEventListener mSensorListener;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +51,43 @@ public class ShowActivity extends Activity {
 		
 		
 		setActTextField(act_txt, cat_txt, cat_id);
+		
+		Context urContext = this;
+		mDbHelper = new DataAdapter(urContext);
+		
+		
+		//shake
+		 mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+		    mSensorListener = new ShakeEventListener();   
+		
+		    mSensorListener.setOnShakeListener(new ShakeEventListener.OnShakeListener() {
+		
+		      public void onShake() {
+		    	  Intent intent = getIntent();
+		    	  
+		    	  mDbHelper.open();
+		      	
+			      	Random ran = new Random();
+			      	int randomNum = ran.nextInt(539)+1;
+			      	
+			      	Cursor testdata = mDbHelper.getActivityFromID(randomNum);
+			      	
+			      	//String actTitle = testdata.getString(testdata.getColumnIndex("Act_Title"));
+			  		// String catID = testdata.getString(testdata.getColumnIndex("Category"));
+			  		 Log.i(TAG, "in activity actTitle: " + mDbHelper.actTitle + " catID: " + mDbHelper.catID);
+			  		 intent.putExtra(ACT_TITLE, mDbHelper.actTitle);
+			  		 intent.putExtra(CAT_ID, mDbHelper.catID);
+			  		 intent.putExtra(CAT_TITLE, mDbHelper.catTitle);
+			  		 //intent.putExtra(CAT_IMAGE, mDbHelper.catImage);
+			  		 testdata.close();
+		  		 
+		      	mDbHelper.close();
+		    	  
+		    	  finish();
+		    	  startActivity(intent);
+		    	 // Log.i(TAG, "SHAKE IT!");
+		      }
+		    });
 		
 	}
 	
@@ -77,7 +131,19 @@ public class ShowActivity extends Activity {
 		return true;
 	}
 	
-	
+    @Override
+    protected void onResume() {
+      super.onResume();
+      mSensorManager.registerListener(mSensorListener,
+          mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
+          SensorManager.SENSOR_DELAY_UI);
+    }
+
+    @Override
+    protected void onPause() {
+      mSensorManager.unregisterListener(mSensorListener);
+      super.onStop();
+    }	
 	
 	public void setActTextField(String txtStr, String txtCat, String intCat){
 		//TODO something
