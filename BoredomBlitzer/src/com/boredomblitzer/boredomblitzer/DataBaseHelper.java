@@ -19,7 +19,7 @@ private static String DB_PATH = "";
 private static String DB_NAME ="boredomblizter_database";// Database name
 private SQLiteDatabase mDataBase; 
 private final Context mContext;
-private static final int DATABASE_VERSION = 4;
+private static final int DATABASE_VERSION = 5; //increment to force db update
 
 public DataBaseHelper(Context context) 
 {
@@ -30,7 +30,7 @@ public DataBaseHelper(Context context)
 
 public void createDataBase() throws IOException
 {
-    //If database not exists copy it from the assets
+    //If database doesnt exist copy it from the assets
 
     boolean mDataBaseExist = checkDataBase();
     

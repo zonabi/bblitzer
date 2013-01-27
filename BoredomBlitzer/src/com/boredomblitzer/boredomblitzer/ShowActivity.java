@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.database.Cursor;
+import android.graphics.Typeface;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.Bundle;
@@ -43,6 +44,13 @@ public class ShowActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_show);
 		
+		//set custom fonts
+		Typeface font = Typeface.createFromAsset(getAssets(), "fonts/Action_Man_Bold.ttf"); 
+        TextView txt_cat = (TextView) findViewById(R.id.activityCategory);  
+        txt_cat.setTypeface(font);  
+        TextView txt_act = (TextView) findViewById(R.id.activityTitle);  
+        txt_act.setTypeface(font);  
+		
 		Intent intent = getIntent();
 		act_txt = intent.getStringExtra(MainScreen.ACT_TITLE);
 		String cat_id = intent.getStringExtra(MainScreen.CAT_ID);
@@ -69,6 +77,7 @@ public class ShowActivity extends Activity {
 		      	
 			      	Random ran = new Random();
 			      	int randomNum = ran.nextInt(539)+1;
+			      	//int randomNum = 251;  //testing
 			      	
 			      	Cursor testdata = mDbHelper.getActivityFromID(randomNum);
 			      	

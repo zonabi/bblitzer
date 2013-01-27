@@ -6,13 +6,14 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Typeface;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
-import android.widget.Toast;
+import android.widget.TextView;
 
 public class MainScreen extends Activity {
 	
@@ -33,6 +34,11 @@ public class MainScreen extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_screen);
+        
+        //set custom fonts
+        TextView txt = (TextView) findViewById(R.id.txt_main_top_instruct);  
+        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/Action_Man_Bold.ttf");  
+        txt.setTypeface(font);  
         
         Context urContext = this;
 		mDbHelper = new DataAdapter(urContext);        
