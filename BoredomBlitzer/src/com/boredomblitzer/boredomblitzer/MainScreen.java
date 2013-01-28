@@ -36,9 +36,12 @@ public class MainScreen extends Activity {
         setContentView(R.layout.activity_main_screen);
         
         //set custom fonts
-        TextView txt = (TextView) findViewById(R.id.txt_main_top_instruct);  
-        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/Action_Man_Bold.ttf");  
-        txt.setTypeface(font);  
+        TextView txt = (TextView) findViewById(R.id.txt_main_top_instruct); 
+        TextView txt2 = (TextView) findViewById(R.id.txtMainBottomInfo); 
+        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/Action_Man_Bold.ttf"); 
+        Typeface font2 = Typeface.createFromAsset(getAssets(), "fonts/Action_Man.ttf"); 
+        txt.setTypeface(font);
+        txt2.setTypeface(font2);
         
         Context urContext = this;
 		mDbHelper = new DataAdapter(urContext);        

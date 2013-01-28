@@ -26,18 +26,18 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.10" />
-            
+
             <TextView
-		        android:id="@+id/txt_main_top_instruct"
-				android:textSize="20sp"
-				android:gravity="center"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:lines="2"
-		        android:layout_marginTop="20dp"
-		        android:layout_marginLeft="40dp"
-		        android:layout_marginRight="40dp"
-		        android:text="@string/main_screen_msg" />
+                android:id="@+id/txt_main_top_instruct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:lines="2"
+                android:text="@string/main_screen_msg"
+                android:textSize="20sp" />
             
             <View
                 android:layout_width="0dp"
@@ -63,5 +63,19 @@
         android:contentDescription="@string/blitzBtnDesc"
         android:onClick="blitzBtnPress"
         android:src="@drawable/bb_logo3a" />
+
+    <TextView
+        android:id="@+id/txtMainBottomInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="34dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:gravity="center"
+        android:lines="3"
+        android:text="@string/main_screen_bottom"
+        android:textSize="15sp" />
 
 </RelativeLayout>

@@ -71,33 +71,37 @@ public class ShowActivity extends Activity {
 		    mSensorListener.setOnShakeListener(new ShakeEventListener.OnShakeListener() {
 		
 		      public void onShake() {
-		    	  Intent intent = getIntent();
-		    	  
-		    	  mDbHelper.open();
-		      	
-			      	Random ran = new Random();
-			      	int randomNum = ran.nextInt(539)+1;
-			      	//int randomNum = 251;  //testing
-			      	
-			      	Cursor testdata = mDbHelper.getActivityFromID(randomNum);
-			      	
-			      	//String actTitle = testdata.getString(testdata.getColumnIndex("Act_Title"));
-			  		// String catID = testdata.getString(testdata.getColumnIndex("Category"));
-			  		 Log.i(TAG, "in activity actTitle: " + mDbHelper.actTitle + " catID: " + mDbHelper.catID);
-			  		 intent.putExtra(ACT_TITLE, mDbHelper.actTitle);
-			  		 intent.putExtra(CAT_ID, mDbHelper.catID);
-			  		 intent.putExtra(CAT_TITLE, mDbHelper.catTitle);
-			  		 //intent.putExtra(CAT_IMAGE, mDbHelper.catImage);
-			  		 testdata.close();
-		  		 
-		      	mDbHelper.close();
-		    	  
-		    	  finish();
-		    	  startActivity(intent);
-		    	 // Log.i(TAG, "SHAKE IT!");
+		    	  restartRandomActivity(getCurrentFocus());
 		      }
 		    });
 		
+	}
+	
+	public void restartRandomActivity(View view){
+		Intent intent = getIntent();
+  	  
+  	  	mDbHelper.open();
+    	
+      	Random ran = new Random();
+      	int randomNum = ran.nextInt(539)+1;
+      	//int randomNum = 251;  //testing
+      	
+      	Cursor testdata = mDbHelper.getActivityFromID(randomNum);
+      	
+      	//String actTitle = testdata.getString(testdata.getColumnIndex("Act_Title"));
+  		// String catID = testdata.getString(testdata.getColumnIndex("Category"));
+  		 Log.i(TAG, "in activity actTitle: " + mDbHelper.actTitle + " catID: " + mDbHelper.catID);
+  		 intent.putExtra(ACT_TITLE, mDbHelper.actTitle);
+  		 intent.putExtra(CAT_ID, mDbHelper.catID);
+  		 intent.putExtra(CAT_TITLE, mDbHelper.catTitle);
+  		 //intent.putExtra(CAT_IMAGE, mDbHelper.catImage);
+  		 testdata.close();
+		 
+    	mDbHelper.close();
+  	  
+  	  finish();
+  	  startActivity(intent);
+  	 // Log.i(TAG, "SHAKE IT!");
 	}
 	
 	public void shareIt(View view){

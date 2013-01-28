@@ -38,14 +38,24 @@
         android:src="@drawable/bb_activity_square01" />
 
     <ImageButton
-        android:id="@+id/imageButton1"
+        android:id="@+id/imageShareBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/categoryImage"
         android:layout_below="@+id/categoryImage"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="14dp"
-        android:onClick="shareIt"
+        android:layout_marginTop="21dp"
         android:background="@null"
+        android:onClick="shareIt"
         android:src="@drawable/bblitzer_sharebtn" />
+
+    <ImageButton
+        android:id="@+id/ImageBlitzAgain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/categoryImage"
+        android:layout_alignTop="@+id/imageShareBtn"
+        android:background="@null"
+        android:onClick="restartRandomActivity"
+        android:src="@drawable/bblitzer_againbtn" />
 
 </RelativeLayout>
