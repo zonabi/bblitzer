@@ -106,7 +106,6 @@ public class MainScreen extends Activity {
 		 testdata.close();
 		 
     	mDbHelper.close();
-    	//String logTag = "DBCursor";
 		//Log.i(logTag, "testdata: " + testdata);
     	startActivity(intent);
     }

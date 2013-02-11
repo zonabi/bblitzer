@@ -55,7 +55,7 @@ public class ShowActivity extends Activity {
 		act_txt = intent.getStringExtra(MainScreen.ACT_TITLE);
 		String cat_id = intent.getStringExtra(MainScreen.CAT_ID);
 		String cat_txt = intent.getStringExtra(MainScreen.CAT_TITLE);
-		String cat_img = intent.getStringExtra(MainScreen.CAT_IMAGE);
+		//String cat_img = intent.getStringExtra(MainScreen.CAT_IMAGE);
 		
 		
 		setActTextField(act_txt, cat_txt, cat_id);
