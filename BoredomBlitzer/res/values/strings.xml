@@ -3,13 +3,21 @@
 
     <string name="app_name">Boredom Blitzer - Fun Ideas</string>
     <string name="main_screen_msg">Shake Or Tap To Blitz Your Boredom!</string>
-    <string name="main_screen_bottom">The Boredom Blitzer! Over 500 Activities sure to bust your boredom to bits!</string>
+    <string name="main_screen_bottom">The Boredom Blitzer! Over 500 Activities sure to bust your boredom to bits! <a href="com.package.name://aboutapp/"><u>About App</u></a></string>
     <string name="menu_settings">Settings</string>
     <string name="blitzBtnDesc">Boredom Blitzer Button!</string>
     <string name="hello_world">Hello world!</string>
+    <string name="about_top">About Boredom Blitzer</string>
+    <string name="about_main">Welcome to the Boredom Blitzer!  My name is Katherine Westphal and I created this little app to help kids play more, indoors and outdoors. The activities in this app are designed to be fun, first and foremost.  Many activities involve moving around, reducing childhood obesity and improving fitness.  Many activities involve playing with others, building social skills.  Many involve creativity, boosting brain activity.\n\n
+        Follow us on <a href="http://www.facebook.com/BoredomBlitzer">Facebook</a> and <a href="http://twitter.com/BoredomBlitzer">Twitter</a>!
+        \n\n
+        This app was produced by <a href="http://www.zonabidesign.com">zonabidesign</a>.
+\n\n
+Note: A few of the activities involve minor risks, like climbing trees.  While there is a small risk of injury, it is up to the parents to teach their children how to manage risks and stay safe.  In purchasing the app, parents assume all liability for their children’s safety.</string>
     <string name="title_activity_show">Boredom Blitzer Idea!</string>
     <string name="activity_top_txt">Activity Txt here</string>
     <string name="activity_category_txt">Activity Category</string>
     <string name="activity_bottom_txt">Bottom Text</string>
+    <string name="title_activity_about_app">AboutApp</string>
 
 </resources>

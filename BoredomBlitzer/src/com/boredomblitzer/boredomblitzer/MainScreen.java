@@ -10,6 +10,7 @@ import android.graphics.Typeface;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.text.SpannableStringBuilder;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -63,6 +64,9 @@ public class MainScreen extends Activity {
 		    	 // Log.i(TAG, "SHAKE IT!");
 		      }
 		    });
+		    
+		
+		    
         
     }
 
@@ -92,7 +96,9 @@ public class MainScreen extends Activity {
     	mDbHelper.open();
     	
     	Random ran = new Random();
-    	int randomNum = ran.nextInt(539)+1;
+    	//int randomNum = ran.nextInt(539)+1;
+    	//get a specific item for testing
+    	int randomNum = 517;
     	
     	Cursor testdata = mDbHelper.getActivityFromID(randomNum);
     	

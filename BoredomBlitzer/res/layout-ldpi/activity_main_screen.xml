@@ -33,11 +33,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="4dp"
                 android:gravity="center"
                 android:lines="2"
                 android:text="@string/main_screen_msg"
-                android:textSize="22sp" />
+                android:textSize="17sp" />
             
             <View
                 android:layout_width="0dp"
@@ -70,12 +70,12 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginBottom="34dp"
+        android:layout_marginBottom="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:gravity="center"
         android:lines="3"
         android:text="@string/main_screen_bottom"
-        android:textSize="15sp" />
+        android:textSize="13sp" />
 
 </RelativeLayout>
