@@ -3,7 +3,7 @@
 
     <string name="app_name">Boredom Blitzer - Fun Ideas</string>
     <string name="main_screen_msg">Shake Or Tap To Blitz Your Boredom!</string>
-    <string name="main_screen_bottom">The Boredom Blitzer! Over 500 Activities sure to bust your boredom to bits! <a href="com.package.name://aboutapp/"><u>About App</u></a></string>
+    <string name="main_screen_bottom">The Boredom Blitzer! Over 500 Activities sure to bust your boredom to bits! <a href="bbapp-activity://com.boredomblitzer.boredomblitzer.AboutApp"><u>About App</u></a></string>
     <string name="menu_settings">Settings</string>
     <string name="blitzBtnDesc">Boredom Blitzer Button!</string>
     <string name="hello_world">Hello world!</string>
