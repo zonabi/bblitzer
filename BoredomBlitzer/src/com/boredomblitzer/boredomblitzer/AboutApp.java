@@ -1,8 +1,10 @@
 package com.boredomblitzer.boredomblitzer;
 
-import android.os.Bundle;
 import android.app.Activity;
+import android.os.Bundle;
+import android.text.method.LinkMovementMethod;
 import android.view.Menu;
+import android.widget.TextView;
 
 public class AboutApp extends Activity {
 
@@ -10,6 +12,10 @@ public class AboutApp extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_about_app);
+		
+		TextView aboutTxt = (TextView) findViewById(R.id.about_main);
+		aboutTxt.setMovementMethod(LinkMovementMethod.getInstance());
+		
 	}
 
 	@Override

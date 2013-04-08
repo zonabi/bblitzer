@@ -18,6 +18,7 @@ import android.os.Parcelable;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -109,7 +110,7 @@ public class ShowActivity extends Activity {
 		List<Intent> targetedShareIntents = new ArrayList<Intent>();
 		Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
 		sharingIntent.setType("text/plain");
-		String shareBody = "Boredom Blitzer suggested to " + act_txt + " to cure boredom! Get the app at http://www.BoredomBlitzer.com";
+		String shareBody = "Bored? Come join me! Let's " + act_txt + " - suggested by the Boredom Blitzer app http://BoredomBlitzer.com";
 
 		PackageManager pm = view.getContext().getPackageManager();
 		List<ResolveInfo> activityList = pm.queryIntentActivities(sharingIntent, 0);
@@ -143,6 +144,18 @@ public class ShowActivity extends Activity {
 		getMenuInflater().inflate(R.menu.activity_show, menu);
 		return true;
 	}
+	
+	public boolean onOptionsItemSelected(MenuItem item){
+    	//respond to menu item
+    	switch(item.getItemId()){
+    	case R.id.menu_settings:
+    		startActivity(new Intent(this, AboutApp.class));
+    		return true;
+    		default:
+    			return super.onOptionsItemSelected(item);
+    			
+    	}
+    }
 	
     @Override
     protected void onResume() {
