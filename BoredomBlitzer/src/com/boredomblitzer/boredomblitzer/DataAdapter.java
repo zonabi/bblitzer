@@ -34,7 +34,7 @@ public class DataAdapter
         } 
         catch (IOException mIOException) 
         {
-            Log.e(TAG, mIOException.toString() + "  UnableToCreateDatabase");
+           // Log.e(TAG, mIOException.toString() + "  UnableToCreateDatabase");
             throw new Error("UnableToCreateDatabase");
         }
         return this;
@@ -50,7 +50,7 @@ public class DataAdapter
         } 
         catch (SQLException mSQLException) 
         {
-            Log.e(TAG, "open >>"+ mSQLException.toString());
+           // Log.e(TAG, "open >>"+ mSQLException.toString());
             throw mSQLException;
         }
         return this;
@@ -69,7 +69,7 @@ public class DataAdapter
             	 if(mCur.moveToFirst()){
             		 do {
             			 actTitle = mCur.getString(mCur.getColumnIndex("Title"));
-            			 Log.i(TAG, "actTitle: " + actTitle);
+            			// Log.i(TAG, "actTitle: " + actTitle);
             		 }while (mCur.moveToNext());
             	 } 
             	//String tstStr = mCur.getString(getColumnIndex(0)); 
@@ -80,7 +80,7 @@ public class DataAdapter
          }
          catch (SQLException mSQLException) 
          {
-             Log.e(TAG, "getTestData >>"+ mSQLException.toString());
+            // Log.e(TAG, "getTestData >>"+ mSQLException.toString());
              throw mSQLException;
          }
      }
@@ -105,7 +105,7 @@ public class DataAdapter
             		 do {
             			 actTitle = mCur.getString(mCur.getColumnIndex("Act_Title"));
             			 catID = mCur.getString(mCur.getColumnIndex("Category"));
-            			 Log.i(TAG, "actTitle: " + actTitle + " catID: " + catID);
+            			// Log.i(TAG, "actTitle: " + actTitle + " catID: " + catID);
             			 
             			
             			 getCategory(Integer.decode(catID));
@@ -118,7 +118,7 @@ public class DataAdapter
          }
          catch (SQLException mSQLException) 
          {
-             Log.e(TAG, "getTestData >>"+ mSQLException.toString());
+            // Log.e(TAG, "getTestData >>"+ mSQLException.toString());
              throw mSQLException;
          }
      }
@@ -137,7 +137,7 @@ public class DataAdapter
             		 do {
             			 catTitle = mCur.getString(mCur.getColumnIndex("Cat_Title"));
             			 catImage = mCur.getString(mCur.getColumnIndex("Image"));
-            			 Log.i(TAG, "actTitle: " + catTitle + " catID: " + catImage);
+            			// Log.i(TAG, "actTitle: " + catTitle + " catID: " + catImage);
             		 }while (mCur.moveToNext());
             	 } 
 
@@ -147,7 +147,7 @@ public class DataAdapter
          }
          catch (SQLException mSQLException) 
          {
-             Log.e(TAG, "getTestData >>"+ mSQLException.toString());
+            // Log.e(TAG, "getTestData >>"+ mSQLException.toString());
              throw mSQLException;
          }
      }

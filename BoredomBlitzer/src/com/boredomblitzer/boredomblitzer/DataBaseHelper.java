@@ -35,7 +35,7 @@ public void createDataBase() throws IOException
     boolean mDataBaseExist = checkDataBase();
     
     if(mDataBaseExist){
-    	Log.d(TAG, "db exists");
+    	//Log.d(TAG, "db exists");
     	this.getWritableDatabase();
     }
     
@@ -50,7 +50,7 @@ public void createDataBase() throws IOException
         {
             //Copy the database from assests
             copyDataBase();
-            Log.e(TAG, "createDatabase database created");
+           // Log.e(TAG, "createDatabase database created");
         } 
         catch (IOException mIOException) 
         {
@@ -111,7 +111,7 @@ public void createDataBase() throws IOException
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 		// TODO Auto-generated method stub
 		if (newVersion > oldVersion){
-			Log.d("Database Upgrade", "Database version higher than old.");
+			//Log.d("Database Upgrade", "Database version higher than old.");
 			mContext.deleteDatabase(DB_NAME);
 		}
 	}

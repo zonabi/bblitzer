@@ -91,7 +91,7 @@ public class ShowActivity extends Activity {
       	
       	//String actTitle = testdata.getString(testdata.getColumnIndex("Act_Title"));
   		// String catID = testdata.getString(testdata.getColumnIndex("Category"));
-  		 Log.i(TAG, "in activity actTitle: " + mDbHelper.actTitle + " catID: " + mDbHelper.catID);
+  		// Log.i(TAG, "in activity actTitle: " + mDbHelper.actTitle + " catID: " + mDbHelper.catID);
   		 intent.putExtra(ACT_TITLE, mDbHelper.actTitle);
   		 intent.putExtra(CAT_ID, mDbHelper.catID);
   		 intent.putExtra(CAT_TITLE, mDbHelper.catTitle);
