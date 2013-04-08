@@ -10,7 +10,8 @@ public class MyHelperClass extends HelperClass {
         this.mData = data;
     }
 
-    protected void callMyActivityMethod(String txtString) {
+    @Override
+	protected void callMyActivityMethod(String txtString) {
        // mInstance.setActTextField(txtString);
     }
 }

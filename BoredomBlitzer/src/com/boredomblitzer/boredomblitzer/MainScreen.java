@@ -10,7 +10,6 @@ import android.graphics.Typeface;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -59,7 +58,8 @@ public class MainScreen extends Activity {
 		
 		    mSensorListener.setOnShakeListener(new ShakeEventListener.OnShakeListener() {
 		
-		      public void onShake() {
+		      @Override
+			public void onShake() {
 		    	 blitzBtnPress(getCurrentFocus());
 		    	 // Log.i(TAG, "SHAKE IT!");
 		      }
@@ -77,7 +77,8 @@ public class MainScreen extends Activity {
         return true;
     }
     
-    public boolean onOptionsItemSelected(MenuItem item){
+    @Override
+	public boolean onOptionsItemSelected(MenuItem item){
     	//respond to menu item
     	switch(item.getItemId()){
     	case R.id.menu_settings:

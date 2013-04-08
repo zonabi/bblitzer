@@ -16,7 +16,6 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -71,7 +70,8 @@ public class ShowActivity extends Activity {
 		
 		    mSensorListener.setOnShakeListener(new ShakeEventListener.OnShakeListener() {
 		
-		      public void onShake() {
+		      @Override
+			public void onShake() {
 		    	  restartRandomActivity(getCurrentFocus());
 		      }
 		    });
@@ -145,6 +145,7 @@ public class ShowActivity extends Activity {
 		return true;
 	}
 	
+	@Override
 	public boolean onOptionsItemSelected(MenuItem item){
     	//respond to menu item
     	switch(item.getItemId()){
