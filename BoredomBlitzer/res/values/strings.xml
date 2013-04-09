@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Boredom Blitzer - Fun Ideas</string>
+    <string name="app_name">Boredom Blitzer</string>
+    <string name="main_screen_name">Boredom Blitzer - Fun Ideas</string>
     <string name="main_screen_msg">Shake Or Tap To Blitz Your Boredom!</string>
     <string name="main_screen_bottom">The Boredom Blitzer! Over 500 Activities sure to bust your boredom to bits!</string>
     <string name="menu_settings">About Boredom Blitzer</string>
